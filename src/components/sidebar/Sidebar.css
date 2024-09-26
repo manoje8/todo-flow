@@ -1,0 +1,100 @@
+.sidebar-container {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    width: 25%;
+    height: 100%;
+    border-top-left-radius: 8px ;
+    border-bottom-left-radius: 8px ;
+    background-color: #edede9;
+    font-size: small;
+}
+
+.search-bar{
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-bar input {
+    height: 30px;
+    width: 90%;
+    border: none;
+    border-radius: 8px;
+}
+
+.search-bar input:focus {
+    outline: none;
+}
+
+.smart-list ul {
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.3rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.smart-list ul > li {
+    background-color: #b3b3b3;
+    width: 115px;
+    height: 45px;
+    border-radius: 8px;
+    text-align: center;
+    padding: 5px;
+}
+
+.smart-list ul li:hover {
+    background-color: #0c15bdc8;
+    color: rgb(255, 255, 255);
+}
+
+ .my-lists {
+    max-height: 200px; /* Adjust this value to your desired maximum height */
+    overflow-y: auto;
+}
+
+.my-lists p {
+    padding-left: 15px;
+    color: #acaaaa;
+    margin-bottom: 5px;
+}
+
+.my-lists ul li {
+    line-height: 2.2;
+    margin-bottom: 5px;
+}
+
+.my-lists ul li span:after{
+    content: " ";
+}
+
+.my-lists ul li:hover {
+    color: #ffffff;
+    background-color: #707070;
+    border-radius: 6px;
+}
+
+.list-add-button {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    border-top: 1px solid #ccc;
+}
+
+.list-add-button button {
+    width: 100%;
+    text-align: left;
+    border: none;
+    height: 25px;
+    color: #848181;
+}
+
+.list-add-button button:hover {
+    color: #fff;
+    background-color: #707070;
+}

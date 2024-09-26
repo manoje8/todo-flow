@@ -1,0 +1,11 @@
+.dark {
+    background-color: #212130;
+    color: #2b00ff;
+    transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.light {
+    background-color: #fff9e5;
+    color: #31313c;
+    transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}

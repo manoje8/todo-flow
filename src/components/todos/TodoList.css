@@ -1,0 +1,88 @@
+.bi:hover {
+    cursor: pointer;
+}
+.head-bar {
+    margin-right: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(245, 172, 4);
+}
+
+.task-order {
+    margin: 25px 0 0 10px;
+    padding: 0;
+}
+
+.task-order .task-list {
+    display: flex;
+    gap: 0.5rem;
+    line-height: 0.7;
+    margin-bottom: 8px;
+}
+
+.task-order hr {
+    margin: 0 0 10px 30px;
+}
+
+.list-action-icon {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.list-action-icon .actived {
+    color: rgb(73, 212, 165);
+}
+
+.task-list .task {
+    margin-top: -3px;
+}
+
+.task-list .completed p {
+    color: #d1d1d1;
+}
+
+.task-list .completed p:last-child {
+    color: #d1d1d1;
+}
+.task p {
+    font-size: 13px;
+    margin-bottom: 5px;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+.task input {
+    border: none;
+    border-bottom: 1px solid #aaa9a9;
+}
+
+.task input:focus {
+    border: none;
+    outline: none;
+}
+
+.task-inner-line{
+    margin-left: 30px;
+    color: #aaa9a9;
+}
+
+.bi-circle-fill {
+    color:rgb(254, 45, 45)
+}
+
+.note-form {
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+    margin-left: 2.2rem;
+}
+
+.note-form input {
+    border: none;
+}
+
+.note-form input:focus {
+    outline: none;
+}
+

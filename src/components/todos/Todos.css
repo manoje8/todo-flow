@@ -1,0 +1,10 @@
+.todos{
+    padding-left: 15px;
+    position: absolute;
+    overflow:auto;
+    height: 100%;
+    width: 73%;
+    margin-left: 25%;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
