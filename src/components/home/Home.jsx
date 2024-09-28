@@ -5,7 +5,7 @@ import "./Home.css"
 import { useSelector } from "react-redux"
 
 const Home = () => {
-    const {theme} = useSelector(state => state.todos)
+    const {theme} = useSelector(state => state.actions)
     
     return (
         <div className={`App ${theme ? 'light' : 'dark'}`}>

@@ -80,9 +80,16 @@
 
 .note-form input {
     border: none;
+    color: inherit;
+    color: black;
+    font-weight: 400;
 }
 
 .note-form input:focus {
     outline: none;
+    border: none;
+    box-shadow: none;
+    color: black;
+    font-weight: 400;
 }
 

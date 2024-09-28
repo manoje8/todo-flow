@@ -49,6 +49,7 @@
 }
 
 .smart-list ul li:hover {
+    cursor: pointer;
     background-color: #0c15bdc8;
     color: rgb(255, 255, 255);
 }
@@ -97,4 +98,9 @@
 .list-add-button button:hover {
     color: #fff;
     background-color: #707070;
+}
+
+.smart-list .lists{
+    background-color: #0c15bdc8;
+    color: rgb(255, 255, 255);
 }
