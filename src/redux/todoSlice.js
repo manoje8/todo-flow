@@ -10,8 +10,6 @@ const initialState = {
     isLoading: false,
     error: null,
     token: null,
-    theme: null,
-    searchValue: ''
 }
 
 const todoSlice = createSlice({
@@ -21,12 +19,6 @@ const todoSlice = createSlice({
         logout: (state) => {
             localStorage.clear()
             state.token = null
-        },
-        theme: (state, action) => {
-            state.theme = action.payload
-        },
-        search: (state, action) => {
-            state.searchValue = action.payload
         }
     },
     extraReducers: (builder) => {

@@ -5,7 +5,8 @@ import { addTodo, deleteTodo, editTodo, fetchTodos } from "../../redux/todoActio
 import { getWeek } from "../utils/dateFormater"
 
 const TodoList = () => {
-    const {notes, isLoading, error, searchValue} = useSelector(state => state.todos)
+    const {notes, isLoading, error} = useSelector(state => state.todos)
+    const { searchValue, smartList } = useSelector(state => state.actions)
     const dispatch = useDispatch()
     const [filteredValue, setFilteredValue] = useState([])
     const [status, setStatus] = useState(true)
@@ -26,6 +27,7 @@ const TodoList = () => {
         status: false
     });
 
+    // Get the token
     const token = localStorage.getItem('token')
     
     useEffect(() => {
@@ -33,16 +35,32 @@ const TodoList = () => {
         dispatch(fetchTodos(token))
     },[dispatch, token])
 
+
     useEffect(() => {
         if (searchValue) {
+            // set todos value when the user search
             setFilteredValue(notes.filter(todo => todo.title.toLowerCase().includes(searchValue.toLowerCase())));
-        } else 
+        }
+        else if(smartList.today)
+        {
+            setFilteredValue(notes.filter( todo => getWeek(todo.date) === getWeek(new Date())))
+        } 
+        else if(smartList.completed)
+        {
+            setFilteredValue(notes.filter( todo => todo.status === true))
+        }
+        else if(smartList.events)
+        {
+            setFilteredValue(notes.filter( todo => todo.location.length > 0))
+        } 
+        else 
         {
             setFilteredValue(notes);
         }
-    }, [searchValue, notes]);
+    }, [searchValue, notes, smartList]);
 
 
+    // handle for add todo
     const handleSubmit = (e) => {
         e.preventDefault()
         dispatch(addTodo({note, token}))
@@ -57,8 +75,8 @@ const TodoList = () => {
         })
     }
 
+    // set the value in the input when the editHandler activated
     const enableEdit = (todo) => {
-
         if (editingId !== todo._id) {
             setEditingId(todo._id); // Set the task to be edited
             setUpdateNote({
@@ -71,16 +89,20 @@ const TodoList = () => {
         }
     };
     
+    
+    // To save the edited value
     const handleSave = (todoId) => {
         dispatch(editTodo({todoId, updateNote}))
         dispatch(fetchTodos(token))
         setEditingId(null); // Exit edit mode
     };
 
+    // Delete handler
     const handleDelete = (todoId) => {
         dispatch(deleteTodo(todoId))
     }
 
+    // To set the value
     const changeHandler = ({target: {value, name}}) => {
         setNote({
             ...note,
@@ -88,6 +110,7 @@ const TodoList = () => {
         })
     }
 
+    // Set the edited value
     const editChangeHandler = ({target: {value, name}}) => {
         setUpdateNote(prev => ({
             ...prev,
@@ -95,11 +118,13 @@ const TodoList = () => {
         }));
     }
 
+    // Handler for Edit activation
     const insertHandler = (e) => {
         e.target.checked = false
         setInputType(!inputType)
     }
 
+    // handle for todo status change
     const handleStatus = (todoId) => {
         setStatus(!status)
         dispatch(editTodo({todoId, 'updateNote' : {status}}))
@@ -165,11 +190,11 @@ const TodoList = () => {
                             inputType ?
                             <>
                                 <form onSubmit={handleSubmit} className="note-form">
-                                    <input type="text" name="title" placeholder="name" onChange={changeHandler} required/>
-                                    <input type="text" name="note" placeholder="note" onChange={changeHandler}/>
-                                    <div className="d-flex">
-                                        <input type="datetime-local" name="date"placeholder="Add Date" onChange={changeHandler}/>
-                                        <input type="text" className="mx-3" name="location" placeholder="Add Location" onChange={changeHandler}/>
+                                    <input type="text" className="form-control form-control-sm col-md-6" name="title" placeholder="name" onChange={changeHandler} required/>
+                                    <input type="text" className="form-control form-control-sm col-md-6" name="note" placeholder="note" onChange={changeHandler}/>
+                                    <div className="d-flex form-group">
+                                        <input type="datetime-local" className="form-control form-control-sm col-md-3" name="date"placeholder="Add Date" onChange={changeHandler}/>
+                                        <input type="text" className="form-control form-control-sm col-md-3 mx-1" name="location" placeholder="Add Location" onChange={changeHandler}/>
                                     </div>
                                     <button style={{display: "none"}}>+</button>
                                 </form> 
