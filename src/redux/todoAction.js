@@ -6,10 +6,10 @@ const API_URL = `${process.env.REACT_APP_API_URL}/api/todos`;
 
 
 // Fetch all todos
-export const fetchTodos = createAsyncThunk('todos/fetchTodos', async(_, {rejectWithValue}) => {
+export const fetchTodos = createAsyncThunk('todos/fetchTodos', async(token, {rejectWithValue}) => {
     try 
     {
-        const response = await axios.get(API_URL);
+        const response = await axios.get(API_URL, { headers: {Authorization: `Bearer ${token}`}});
         return response.data;  // Assuming the API returns an array of todos
 
     } catch (error) 
@@ -19,10 +19,12 @@ export const fetchTodos = createAsyncThunk('todos/fetchTodos', async(_, {rejectW
 })
 
 // Add a new todo
-export const addTodo = createAsyncThunk("todos/addTodo", async (newTodo, { rejectWithValue }) => {
+export const addTodo = createAsyncThunk("todos/addTodo", async ( values,{ rejectWithValue }) => {
+    const {note, token} = values
+    
     try 
     {
-        const response = await axios.post(API_URL, newTodo);
+        const response = await axios.post(API_URL, note, {headers: {Authorization: `Bearer ${token}`}});
         return response.data;  // Assuming the API returns the created todo
 
     } catch (error) 

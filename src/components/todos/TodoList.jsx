@@ -26,11 +26,12 @@ const TodoList = () => {
         status: false
     });
 
+    const token = localStorage.getItem('token')
     
     useEffect(() => {
         // Fetch todos when the component is mounted
-        dispatch(fetchTodos())
-    },[dispatch])
+        dispatch(fetchTodos(token))
+    },[dispatch, token])
 
     useEffect(() => {
         if (searchValue) {
@@ -44,9 +45,9 @@ const TodoList = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        dispatch(addTodo(note))
+        dispatch(addTodo({note, token}))
         setInputType(false)
-        dispatch(fetchTodos())
+        dispatch(fetchTodos(token))
         setNote({
             title: '',
             note: '',
@@ -72,7 +73,7 @@ const TodoList = () => {
     
     const handleSave = (todoId) => {
         dispatch(editTodo({todoId, updateNote}))
-        dispatch(fetchTodos())
+        dispatch(fetchTodos(token))
         setEditingId(null); // Exit edit mode
     };
 

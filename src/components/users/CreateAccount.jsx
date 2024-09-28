@@ -29,7 +29,7 @@ const CreateAccount = () => {
 
         if (register.fulfilled.match(resultAction)) {
             // If registration is successful, navigate to the login page
-            navigate('/login');
+            navigate('/auth/login');
         }
 }
 
