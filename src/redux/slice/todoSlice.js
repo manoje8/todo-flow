@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addTodo, deleteTodo, editTodo, fetchTodos } from "./todoAction";
-import { forgotPassword, login, register, resetPassword } from "./userAction";
+import { addNewList, addTodo, deleteNewList, deleteTodo, editTodo, fetchTodos, getTodosByListId } from "../action/todoAction";
+import { forgotPassword, login, register, resetPassword } from "../action/userAction";
 
 
 const initialState = {
@@ -10,6 +10,8 @@ const initialState = {
     isLoading: false,
     error: null,
     token: null,
+    newlist: [],
+    newlistValue : []
 }
 
 const todoSlice = createSlice({
@@ -30,7 +32,9 @@ const todoSlice = createSlice({
             })
             .addCase(fetchTodos.fulfilled, (state, action) => {
                 state.isLoading = false;
-                state.notes = action.payload;
+
+                state.notes = action.payload.todos;
+                state.newlist = action.payload.category;
             })
             .addCase(fetchTodos.rejected, (state, action) => {
                 state.isLoading = false;
@@ -62,7 +66,16 @@ const todoSlice = createSlice({
                 state.error = action.payload;
             })
 
-            // Authentication
+            // Get todo by list Id
+            .addCase(getTodosByListId.fulfilled, (state, action) => {
+                state.newlistValue = action.payload
+            })
+            .addCase(getTodosByListId.rejected, (state, action) => {
+                state.error = action.payload;
+            })
+
+// ------------------------------ Authentication -----------------------------
+
             // Handle register
             .addCase(register.pending, (state) => {
                 state.isLoading = true;
@@ -115,6 +128,25 @@ const todoSlice = createSlice({
             })
             .addCase(resetPassword.rejected, (state, action) => {
                 state.isLoading = false;
+                state.error = action.payload;
+            })
+
+//------------------------------------- New Lists ------------------------------
+
+
+            // Add New lists
+            .addCase(addNewList.fulfilled, (state, action) => {
+                state.newlist.push(action.payload)
+            })
+            .addCase(addNewList.rejected, (state, action) => {
+                state.error = action.payload;
+            })
+
+            // Delete todo
+            .addCase(deleteNewList.fulfilled, (state, action) => {
+                state.newlist = state.newlist.filter(list => list._id !== action.payload)
+            })
+            .addCase(deleteNewList.rejected, (state, action) => {
                 state.error = action.payload;
             })
     }

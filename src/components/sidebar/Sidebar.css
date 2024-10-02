@@ -27,6 +27,7 @@
 
 .search-bar input:focus {
     outline: none;
+    padding: 0 8px;
 }
 
 .smart-list ul {
@@ -65,18 +66,46 @@
     margin-bottom: 5px;
 }
 
-.my-lists ul li {
-    line-height: 2.2;
-    margin-bottom: 5px;
+.my-lists ul {
+    margin: 0 2rem;
+	padding: 0;
 }
 
-.my-lists ul li span:after{
-    content: " ";
+.my-lists ul li {
+    padding: 0 5px;
+    font-size: 14px;
+    line-height: 2.3;
+    display: flex;
+    gap: 5px;
+}
+
+.my-lists ul li div {
+    display: flex;
+    gap: 5px;
+}
+
+.my-lists ul #user-list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.my-lists ul li .trash {
+    visibility: hidden;
+}
+
+.my-lists ul li:hover .trash {
+    visibility: visible;
 }
 
 .my-lists ul li:hover {
     color: #ffffff;
     background-color: #707070;
+    border-radius: 6px;
+}
+
+.my-lists ul li.list-active {
+    background-color: #0c15bdc8;
+    color: rgb(255, 255, 255);
     border-radius: 6px;
 }
 
