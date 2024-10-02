@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import Spinner from "../utils/Spinner"
 import { useDispatch, useSelector } from "react-redux"
-import { register } from "../../redux/userAction"
+import { register } from "../../redux/action/userAction"
 
 
 const CreateAccount = () => {

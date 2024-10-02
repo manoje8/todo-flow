@@ -1,4 +1,4 @@
-export const icons = [
+const icons = [
     "bi bi-airplane-fill",
     "bi bi-award-fill",
     "bi bi-backpack4-fill",
@@ -49,5 +49,8 @@ export const icons = [
     "bi bi-stack",
     "bi bi-star-fill",
     "bi bi-telephone-fill",
-    "bi bi-whatsapp"
+    "bi bi-whatsapp",
+    "bi bi-window",
 ]
+
+export default icons

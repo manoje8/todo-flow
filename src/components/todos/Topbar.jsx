@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom"
 import "./Topbar.css"
 import { useDispatch, useSelector } from "react-redux"
-import { logout } from "../../redux/todoSlice"
-import { themeHandler } from "../../redux/actionSlice"
+import { logout } from "../../redux/slice/todoSlice"
+import { themeHandler } from "../../redux/slice/actionSlice"
 import WithAuth from "../WithAuth"
 
 const Topbar = () => {

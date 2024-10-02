@@ -8,7 +8,7 @@ const Home = () => {
     const {theme} = useSelector(state => state.actions)
     
     return (
-        <div className={`App ${theme ? 'light' : 'dark'}`}>
+        <div className={`App ${theme ? 'light' : 'dark'} animated`}>
             <Sidebar />
             <Todos />
         </div>

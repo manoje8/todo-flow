@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 import Spinner from "../utils/Spinner"
 import { useDispatch, useSelector } from "react-redux";
-import { forgotPassword } from "../../redux/userAction";
+import { forgotPassword } from "../../redux/action/userAction";
 
 const ForgotPassword = () => {
     const {isLoading, error} = useSelector(state => state.todos)

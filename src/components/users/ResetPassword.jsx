@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
-import { resetPassword } from "../../redux/userAction"
+import { resetPassword } from "../../redux/action/userAction"
 
 const ResetPassword = () => {
     const {isLoading, error} = useSelector(state => state.todos)

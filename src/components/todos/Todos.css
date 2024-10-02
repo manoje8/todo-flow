@@ -8,3 +8,7 @@
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
 }
+
+.todos::-webkit-scrollbar {
+    width: 10px;
+}
